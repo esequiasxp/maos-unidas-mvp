@@ -1,1 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Elegibilidade</title>
+    <style>
+        body { font-family: sans-serif; background-color: #F8F9FA; color: #212529; margin: 16px; line-height: 1.5; }
+        .card { background: #FFFFFF; border: 2px solid #CED4DA; border-radius: 8px; padding: 20px; }
+        label { display: block; font-size: 1.1rem; font-weight: bold; margin-bottom: 8px; }
+        input[type="text"] { width: 100%; min-height: 48px; font-size: 1.2rem; padding: 8px; border: 2px solid #495057; border-radius: 6px; box-sizing: border-box; margin-bottom: 16px; }
+        .btn-enviar { width: 100%; min-height: 48px; background-color: #0056B3; color: #FFFFFF; font-size: 1.1rem; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; }
+        .alerta-erro { background: #FFF3CD; border-left: 6px solid #856404; color: #856404; padding: 12px; margin-bottom: 16px; font-weight: bold; }
+        .alerta-bloqueio { background: #F8D7DA; border-left: 6px solid #721C24; color: #721C24; padding: 12px; margin-bottom: 16px; font-weight: bold; }
+        .voltar { display: inline-block; margin-top: 16px; color: #0056B3; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Verificação de Beneficiário</h2>
+        <p>Informe o CPF do titular para checar a carência mínima de 30 dias.</p>
 
+        <div th:if="${erro}" class="alerta-erro">
+            <span th:text="${erro}">Mensagem de erro</span>
+        </div>
+
+        <div th:if="${bloqueio}" class="alerta-bloqueio">
+            <p><strong>[X] ATENDIMENTO NÃO PERMITIDO</strong></p>
+            <p>Titular: <span th:text="${beneficiario.nomeCompleto}">Nome</span></p>
+            <p>Carência não cumprida. Faltam <span th:text="${diasRestantes}">X</span> dias para a próxima retirada permitida.</p>
+        </div>
+
+        <form action="/atendimento/verificar" method="post">
+            <label for="cpf">CPF do Beneficiário:</label>
+            <input type="text" id="cpf" name="cpf" inputmode="numeric" placeholder="Ex: 12345678901" required autofocus>
+            <button type="submit" class="btn-enviar">Verificar e Liberar</button>
+        </form>
+
+        <a href="/" class="voltar">&larr; Voltar ao Início</a>
+    </div>
+</body>
+</html>
