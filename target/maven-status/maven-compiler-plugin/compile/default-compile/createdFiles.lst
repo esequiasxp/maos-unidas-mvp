@@ -1,0 +1,6 @@
+br/org/maosunidas/mvp/repository/BeneficiarioRepository.class
+br/org/maosunidas/mvp/model/LoteAlimento.class
+br/org/maosunidas/mvp/MaosUnidasMvpApplication.class
+br/org/maosunidas/mvp/model/Beneficiario.class
+br/org/maosunidas/mvp/repository/LoteAlimentoRepository.class
+br/org/maosunidas/mvp/service/AtendimentoService.class

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprovante de Entrega</title>
+    <style>
+        body { font-family: sans-serif; background-color: #F8F9FA; color: #212529; margin: 16px; line-height: 1.5; }
+        .card { background: #FFFFFF; border: 2px solid #28A745; border-radius: 8px; padding: 20px; }
+        .sucesso-badge { background: #D4EDDA; color: #155724; padding: 10px; border-radius: 6px; font-weight: bold; font-size: 1.1rem; margin-bottom: 16px; }
+        .item-resumo { margin: 8px 0; font-size: 1.05rem; }
+        .btn { display: block; width: 100%; min-height: 48px; background-color: #0056B3; color: #FFFFFF; font-size: 1.1rem; font-weight: bold; text-align: center; line-height: 48px; text-decoration: none; border-radius: 6px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="sucesso-badge">
+            [OK] ENTREGA REGISTRADA COM SUCESSO
+        </div>
+
+        <h2>Comprovante de Atendimento</h2>
+        
+        <div class="item-resumo">
+            <strong>Beneficiário:</strong> <span th:text="${beneficiario.nomeCompleto}">Nome do Titular</span>
+        </div>
+        <div class="item-resumo">
+            <strong>CPF:</strong> <span th:text="${beneficiario.cpf}">00000000000</span>
+        </div>
+        <div class="item-resumo">
+            <strong>Lote Baixado (FEFO):</strong> <span th:text="${lote.codigoLote}">LOT-2026-A1</span>
+        </div>
+        <div class="item-resumo">
+            <strong>Item Entregue:</strong> <span th:text="${lote.nomeAlimento}">Cesta Básica</span>
+        </div>
+        <div class="item-resumo">
+            <strong>Validade do Item:</strong> <span th:text="${#temporals.format(lote.dataValidade, 'dd/MM/yyyy')}">20/10/2026</span>
+        </div>
+
+        <p style="margin-top: 16px; font-size: 0.9rem; color: #495057;">
+            O estoque foi atualizado automaticamente no sistema. O beneficiário entrará em nova carência de 30 dias.
+        </p>
+
+        <a href="/" class="btn">Finalizar e Voltar ao Início</a>
+    </div>
+</body>
+</html>

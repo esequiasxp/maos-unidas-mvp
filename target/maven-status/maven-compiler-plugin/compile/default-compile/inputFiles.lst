@@ -1,0 +1,8 @@
+/workspaces/maos-unidas-mvp/src/main/java/br/org/maosunidas/mvp/MaosUnidasMvpApplication.java
+/workspaces/maos-unidas-mvp/src/main/java/br/org/maosunidas/mvp/config/DataInitializer.java
+/workspaces/maos-unidas-mvp/src/main/java/br/org/maosunidas/mvp/controller/AtendimentoController.java
+/workspaces/maos-unidas-mvp/src/main/java/br/org/maosunidas/mvp/model/Beneficiario.java
+/workspaces/maos-unidas-mvp/src/main/java/br/org/maosunidas/mvp/model/LoteAlimento.java
+/workspaces/maos-unidas-mvp/src/main/java/br/org/maosunidas/mvp/repository/BeneficiarioRepository.java
+/workspaces/maos-unidas-mvp/src/main/java/br/org/maosunidas/mvp/repository/LoteAlimentoRepository.java
+/workspaces/maos-unidas-mvp/src/main/java/br/org/maosunidas/mvp/service/AtendimentoService.java

@@ -55,14 +55,13 @@ class AtendimentoServiceTest {
     void devePermitirEntregaBeneficiarioApto() {
         String cpf = "12345678901";
         Beneficiario beneficiario = new Beneficiario(1L, "Maria Silva", cpf, LocalDate.now().minusDays(35));
-        LoteAlimento lote = new LoteAlimento(1L, "Cesta Basica", LocalDate.now().plusDays(10), 10);
 
         when(beneficiarioRepository.findByCpf(cpf)).thenReturn(Optional.of(beneficiario));
-        when(loteAlimentoRepository.findAllByOrderByDataValidadeAsc()).thenReturn(List.of(lote));
 
         boolean apto = atendimentoService.verificarElegibilidade(cpf);
 
         assertTrue(apto);
+        verify(beneficiarioRepository, times(1)).findByCpf(cpf);
     }
 
     @Test
@@ -76,6 +75,7 @@ class AtendimentoServiceTest {
         boolean apto = atendimentoService.verificarElegibilidade(cpf);
 
         assertFalse(apto);
+        verify(beneficiarioRepository, times(1)).findByCpf(cpf);
     }
 
     @Test

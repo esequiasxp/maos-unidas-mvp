@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mãos Unidas - Painel FEFO</title>
+    <style>
+        body { font-family: sans-serif; background-color: #F8F9FA; color: #212529; margin: 16px; line-height: 1.5; }
+        .card { background: #FFFFFF; border: 2px solid #CED4DA; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+        .btn { display: block; width: 100%; min-height: 48px; background-color: #0056B3; color: #FFFFFF; font-size: 1.1rem; font-weight: bold; text-align: center; line-height: 48px; text-decoration: none; border-radius: 6px; box-sizing: border-box; }
+        .tag-critico { background: #DC3545; color: #FFFFFF; padding: 4px 8px; border-radius: 4px; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+        th, td { border-bottom: 1px solid #DEE2E6; padding: 10px 4px; text-align: left; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+    <header class="card">
+        <h1>Associação Mãos Unidas</h1>
+        <p>Controle de Distribuição e Estoque Prioritário (FEFO)</p>
+        <a href="/atendimento/consulta" class="btn">Iniciar Nova Entrega</a>
+    </header>
+
+    <main class="card">
+        <h2>Lotes com Saída Prioritária</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Item</th>
+                    <th>Validade</th>
+                    <th>Qtd</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="lote : ${lotes}">
+                    <td><span class="tag-critico">[!] PRIORITÁRIO</span></td>
+                    <td th:text="${lote.nomeAlimento}">Cesta Básica</td>
+                    <td th:text="${#temporals.format(lote.dataValidade, 'dd/MM/yyyy')}">20/10/2026</td>
+                    <td th:text="${lote.quantidadeDisponivel}">15</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
